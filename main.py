@@ -64,7 +64,7 @@ def fetch_news_source(connection, news_id):
 
 def fetch_text_from_url(url, article_title, enable_js=False):
     options = Options()
-    options.headless = True  # Використовуйте безголовий режим для автоматизації без відображення браузера
+    options.headless = False  # Використовуйте безголовий режим для автоматизації без відображення браузера
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
@@ -86,7 +86,7 @@ def fetch_text_from_url(url, article_title, enable_js=False):
 
     try:
         driver.get(url)
-        time.sleep(5)  # Чекати завантаження сторінки і обходу захисту Cloudflare
+        time.sleep(15)  # Чекати завантаження сторінки і обходу захисту Cloudflare
 
         # Знайти елемент, що містить заголовок статті
         article_text = ""
