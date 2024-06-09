@@ -152,7 +152,7 @@ def get_summary(text):
     truncated_text = truncate_text_to_token_limit(text, MAX_TOKENS)
 
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-0125",
+        model="gpt-4o",
         messages=[
             {"role": "user",
              "content": f"Я модерую маленький сайт з новинами. На іншому сайті я знайшов новину яку хочу розмістити у себе, тому склади короткий зміст наступного тексту (Але у твоїй відповіді має відразу йти короткий зміст!):\n\n{truncated_text}\n"}
