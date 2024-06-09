@@ -158,7 +158,7 @@ def get_summary(text):
              "content": f"Я модерую маленький сайт з новинами. На іншому сайті я знайшов новину яку хочу розмістити у себе, тому склади короткий зміст наступного тексту (Але у твоїй відповіді має відразу йти короткий зміст!):\n\n{truncated_text}\n"}
         ],
         temperature=1,
-        max_tokens=256,
+        max_tokens=512,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
