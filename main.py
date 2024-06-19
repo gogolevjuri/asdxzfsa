@@ -95,7 +95,7 @@ def random_sleep(min_seconds, max_seconds):
 def simulate_user_activity(driver):
     action = ActionChains(driver)
     for _ in range(random.randint(2, 5)):
-        action.move_by_offset(random.randint(-100, 100), random.randint(-100, 100)).perform()
+        action.move_by_offset(random.randint(1, 100), random.randint(1, 100)).perform()
         random_sleep(0.5, 2)
     for _ in range(random.randint(2, 5)):
         action.send_keys(Keys.PAGE_DOWN).perform()
