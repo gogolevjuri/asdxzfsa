@@ -31,12 +31,6 @@ MAX_TOKENS = 2048  # Ви можете встановити цей ліміт з
 
 nltk.download('punkt')
 
-# Список проксі
-proxies = [
-    "",
-    ""
-]
-
 # Пул User-Agent та відповідних розмірів вікон
 user_agents_and_sizes = [
     (
@@ -71,7 +65,7 @@ user_agents_and_sizes = [
     "360,740")
 ]
 
-# Додаткові HTTP заголовки
+# Додаткові HTTP заголовки !
 additional_headers = [
     {"accept-language": "en-US,en;q=0.9", "upgrade-insecure-requests": "1", "accept-encoding": "gzip, deflate, br",
      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
@@ -166,12 +160,6 @@ def fetch_text_from_url(url, article_title, enable_js=False):
     headers = get_random_headers()
     for key, value in headers.items():
         options.add_argument(f"--header={key}: {value}")
-
-    # Встановлення проксі в залежності від User-Agent
-    user_agent_index = user_agents_and_sizes.index((user_agent, window_size))
-    proxy = proxies[0] if user_agent_index < 5 else proxies[1]
-    proxy_host, proxy_port, proxy_user, proxy_pass = proxy.split(':')
-    options.add_argument(f"--proxy-server=socks5://{proxy_user}:{proxy_pass}@{proxy_host}:{proxy_port}")
 
     # Блокувати зображення для зменшення трафіку
     prefs = {
