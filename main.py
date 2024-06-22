@@ -304,7 +304,7 @@ def fetch_data():
             update_table_state(connection, 'dopovid_session', 2, dopses_id)
 
             # Виконання другого запиту з використанням dopses_id
-            query2 = "SELECT * FROM `tranlation_table` WHERE state=0 and dopses=%s"
+            query2 = "SELECT * FROM `tranlation_table` WHERE state=0 and dopses=%s and (tid % 2)=1"
             cursor.execute(query2, (dopses_id,))
             result2 = cursor.fetchall()
 
@@ -346,7 +346,7 @@ def fetch_data():
                         print(message)
 
                     # Оновлення стану в таблиці tranlation_table
-                    update_table_state(connection, 'tranlation_table', 2, row['tid'], column_name='tid')
+                    update_table_state(connection, 'tranlation_table', 1, row['tid'], column_name='tid')
             else:
                 message = "tranlation_table unfound"
                 log.append(message)
