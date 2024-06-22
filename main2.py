@@ -290,7 +290,7 @@ def fetch_data():
         cursor = connection.cursor(dictionary=True)
 
         # Виконання першого запиту
-        query1 = "SELECT * FROM `dopovid_session` WHERE state in (1,3) limit 1;"
+        query1 = "SELECT * FROM `dopovid_session` WHERE state in (1,2) limit 1;"
         cursor.execute(query1)
         result1 = cursor.fetchone()
 
@@ -301,10 +301,10 @@ def fetch_data():
             dopses_id = result1['id']
 
             # Оновлення стану в таблиці dopovid_session
-            update_table_state(connection, 'dopovid_session', 1, dopses_id)
+            update_table_state(connection, 'dopovid_session', 2, dopses_id)
 
             # Виконання другого запиту з використанням dopses_id
-            query2 = "SELECT * FROM `tranlation_table` WHERE state=0 and dopses=%s and (tid % 2)=1"
+            query2 = "SELECT * FROM `tranlation_table` WHERE state=0 and dopses=%s and (tid % 2)=0"
             cursor.execute(query2, (dopses_id,))
             result2 = cursor.fetchall()
 
